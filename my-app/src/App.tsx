@@ -1,22 +1,21 @@
+import { useEffect } from 'react';
 import logo from './logo.svg';
+
 import './App.css';
+import { fetchData } from './data';
+import Search from './screens/Search';
+
 
 function App() {
+
+  useEffect(() => {
+    fetchData("https://api.github.com/search/issues?q=repo:ltphan/meditation-chrome-extension is:issue is:pr")
+  })
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <Search />
       </header>
     </div>
   );
