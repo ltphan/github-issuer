@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { useLocation } from "react-router-dom";
+import Header from "../components/Header/Header";
 import IssuesList from "../components/List/IssuesList";
 
 interface State {
@@ -13,14 +14,10 @@ const Issues: FunctionComponent = () => {
         
     return ( 
         <div>
-            <div className="navBar">
-                <h1>Issues list</h1>
-                <h2>{state.state.value}</h2>
-            </div>
+            <Header url={state.state.value} />
             <div className="list">
                 <IssuesList issues={state.state.issues}/>
             </div>
-
         </div>
     )
 }
