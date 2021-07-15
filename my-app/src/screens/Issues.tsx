@@ -2,7 +2,6 @@ import React, { FunctionComponent } from "react";
 import { useLocation } from "react-router-dom";
 import IssuesList from "../components/List/IssuesList";
 
-
 interface State {
     issues: Array<any>
     value: string
