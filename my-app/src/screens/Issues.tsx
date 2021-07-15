@@ -1,17 +1,13 @@
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
+import { useLocation } from "react-router-dom";
 
-interface Props {
-    issues: Array<string>
-    url: string
-}
 
-const Issues: FunctionComponent<Props> = (props) => {
-    const { url } = props
-
+const Issues: FunctionComponent = () => {
+    const { state } = useLocation()
+    
     return ( 
         <div>
             <h1>Issues list</h1>
-            <h1>{url}</h1>
         </div>
     )
 }
