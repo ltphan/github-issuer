@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react"
+import IssueItem from "../Item/IssueItem"
 
 interface Props {
     issues: Array<any>
@@ -6,15 +7,15 @@ interface Props {
 
 const IssuesList: FunctionComponent<Props> = (props) => {
     const { issues } = props
-    const listItems = issues.map((issue) => {
+    const issueItems = issues.map((issue) => {
        return (<li key={issue.id.toString()}>
-            {issue.title}
+            <IssueItem title={issue.title} body={issue.body}/>
         </li>)
     })
 
     return (
         <ul>
-            {listItems}
+            {issueItems}
         </ul>
     )
 }
