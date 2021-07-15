@@ -10,7 +10,7 @@ const Issues: FunctionComponent<Props> = (props) => {
 
     return ( 
         <div>
-            <h1>"Github Issue Viewer"</h1>
+            <h1>Issues list</h1>
             <h1>{url}</h1>
         </div>
     )
