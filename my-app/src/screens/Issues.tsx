@@ -1,6 +1,5 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import FilterSelection from "../components/Button/FilterSelection";
 
 import Header from "../components/Header/Header";
 import IssuesList from "../components/List/IssuesList";
@@ -11,13 +10,17 @@ interface State {
 }
 
 const Issues: FunctionComponent = () => {
+    const [issues, setIssues] = useState<Array<any> | []>([])
     const location  = useLocation<{ state: State}>()
     const { state } = location
         
+    useEffect(() => {
+        setIssues(state.state.issues)
+    },[issues])
+
     return ( 
         <div className="container">
             <Header url={state.state.value} />
-            <FilterSelection onFilter={() => {}}/>
             <div className="list">
                 <IssuesList issues={state.state.issues}/>
             </div>
