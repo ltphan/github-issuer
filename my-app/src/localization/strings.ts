@@ -3,5 +3,8 @@ export const strings = {
     allIssues: "All Issues",
     openIssues: "Open Issues",
     closedIssues: "Closed Issues",
-    pullRequests: "Pull Requests"
+    pullRequests: "Pull Requests",
+    all: "all",
+    open: "open",
+    closed: "closed"
 }
