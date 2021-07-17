@@ -11,28 +11,35 @@ interface State {
 }
 
 const Issues: FunctionComponent = () => {
-    const [issues, setIssues] = useState<Array<any> | []>([])
     const [filteredIssues, setFilteredIssues] = useState<Array<any> | []>([])
     const location  = useLocation<{ state: State}>()
     const { state } = location
         
     useEffect(() => {
-        setIssues(state.state.issues)
-    }, [state.state.issues])
+        setFilteredIssues(state.state.issues)
+    }, [])
 
-    const onFilter = (issues: Array<any>, issueState: string) => {
-        const filteredIssues = issues.filter((issue) => {
+    const onFilter = (issueState: string) => {
+        let issues = state.state.issues
+
+        setFilteredIssues(state.state.issues)
+        if (issueState === "all") {
+            setFilteredIssues(issues)
+            return
+        }
+
+        const filteredResults = issues.filter((issue) => {
             return issue.state === issueState
         })
-        setFilteredIssues(filteredIssues)
+        setFilteredIssues(filteredResults)
     }
 
     return ( 
         <div className="container">
             <Header url={state.state.value} />
-            <button onClick={() => setFilteredIssues(issues)}>{strings.allIssues}</button>
-            <button onClick={() => onFilter(issues, strings.open)}>{strings.openIssues}</button>
-            <button onClick={() => onFilter(issues, strings.closed)}>{strings.closedIssues}</button>
+            <button onClick={() => onFilter(strings.all)}>{strings.allIssues}</button>
+            <button onClick={() => onFilter(strings.open)}>{strings.openIssues}</button>
+            <button onClick={() => onFilter(strings.closed)}>{strings.closedIssues}</button>
             <div className="list">
                 <IssuesList issues={filteredIssues}/>
             </div>
