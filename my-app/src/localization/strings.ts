@@ -6,5 +6,7 @@ export const strings = {
     pullRequests: "Pull Requests",
     all: "all",
     open: "open",
-    closed: "closed"
+    closed: "closed",
+    loading: "Loading...",
+    error: "Unable to get issues and pull requests. Please try again"
 }
