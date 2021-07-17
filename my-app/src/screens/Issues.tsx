@@ -21,8 +21,7 @@ const Issues: FunctionComponent = () => {
 
     const onFilter = (issueState: string) => {
         let issues = state.state.issues
-
-        setFilteredIssues(state.state.issues)
+        
         if (issueState === "all") {
             setFilteredIssues(issues)
             return
