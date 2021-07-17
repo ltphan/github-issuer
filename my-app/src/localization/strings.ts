@@ -8,5 +8,6 @@ export const strings = {
     open: "open",
     closed: "closed",
     loading: "Loading...",
-    error: "Unable to get issues and pull requests. Please try again"
+    error: "Unable to get issues and pull requests. Please try again",
+    empty: "No issues or pull requests"
 }

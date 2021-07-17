@@ -20,8 +20,8 @@ const Issues: FunctionComponent = () => {
     }, [])
 
     const onFilter = (issueState: string) => {
-        let issues = state.state.issues
-        
+        const issues = state.state.issues
+
         if (issueState === "all") {
             setFilteredIssues(issues)
             return
@@ -40,7 +40,8 @@ const Issues: FunctionComponent = () => {
             <button onClick={() => onFilter(strings.open)}>{strings.openIssues}</button>
             <button onClick={() => onFilter(strings.closed)}>{strings.closedIssues}</button>
             <div className="list">
-                <IssuesList issues={filteredIssues}/>
+                {state.state.issues.length !== 0 ? <IssuesList issues={filteredIssues}/> : 
+                <h1>{strings.empty}</h1>}
             </div>
         </div>
     )
