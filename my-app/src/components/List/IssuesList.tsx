@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from "react"
+
+import '../List/IssuesList.css'
 import IssueItem from "../Item/IssueItem"
 
 interface Props {
@@ -14,7 +16,7 @@ const IssuesList: FunctionComponent<Props> = (props) => {
     })
 
     return (
-        <ul>
+        <ul className='list'>
             {issueItems}
         </ul>
     )
