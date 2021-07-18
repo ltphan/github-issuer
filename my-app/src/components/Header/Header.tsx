@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react"
 
+import '../Header/Header.css'
 import { strings } from "../../localization/strings"
 
 interface Props {
@@ -10,9 +11,13 @@ const Header: FunctionComponent<Props> = (props) => {
     const { url } = props
 
     return (
-        <div>
-            <h1>{strings.githubIssueViewer}</h1>
-            <h1>{url}</h1>
+        <div className='header'>
+            <div>
+                <h1>{strings.githubIssueViewer}</h1>
+            </div>
+            <div>
+                <h1>{url}</h1>
+            </div>
         </div>
     )
 }
