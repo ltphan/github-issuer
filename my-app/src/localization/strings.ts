@@ -1,5 +1,5 @@
 export const strings = {
-    githubIssueViewer: "Github Issue Viewer",
+    githubIssueViewer: "GitHub Issue Viewer",
     allIssues: "All Issues",
     openIssues: "Open Issues",
     closedIssues: "Closed Issues",

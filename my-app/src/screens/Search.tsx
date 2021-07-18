@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, FunctionComponent, useState } from "react"
 import { RouteComponentProps } from "react-router-dom"
+
+import '../screens/css/Search.css'
 import { fetchData, urlBuilder } from "../data"
 import { strings } from "../localization/strings"
 
@@ -31,7 +33,8 @@ const Search: FunctionComponent<Props> = ({ history }) => {
     }
 
     return (
-        <div>
+        <div className="main">
+            <h1>{strings.githubIssueViewer}</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={value} onChange={handleChange} />
                 <input type="submit" value="Submit" />
