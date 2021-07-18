@@ -2,7 +2,6 @@ import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom"
 
-import './App.css';
 import Issues from "./screens/Issues";
 import Search from './screens/Search';
 
