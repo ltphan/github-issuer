@@ -1,5 +1,6 @@
 .header {
-    flex-direction: row;
+    display: flex;
     border-style: solid;
+    justify-content: space-between;
     margin-bottom: 10px;
 }
