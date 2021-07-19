@@ -3,9 +3,13 @@ export function urlBuilder(url: string) {
     const org = stringArr[3]
     const repo = stringArr[4]
     const orgRepo = org.concat('/', repo)
-    const queryString = 'q=' + encodeURIComponent(`repo:${orgRepo} is:issue is:pr`)
-    const githubUrl = `https://api.github.com/search/issues?${queryString}`
-    return githubUrl 
+    const queryStringPR = 'q=' + encodeURIComponent(`repo:${orgRepo} is:pr`)
+    const queryStringIssue = 'q=' + encodeURIComponent(`repo:${orgRepo} is:issue`)
+    const prUrl = `https://api.github.com/search/issues?${queryStringPR}`
+    const issueUrl = `https://api.github.com/search/issues?${queryStringIssue}`
+    return {
+      prUrl, issueUrl
+    }
 }
 
 export async function fetchData(githubUrl: string) {
