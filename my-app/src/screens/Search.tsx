@@ -19,13 +19,14 @@ const Search: FunctionComponent<Props> = ({ history }) => {
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const url = urlBuilder(value)
+        const {prUrl, issueUrl} = urlBuilder(value)
         setLoading(true)
         try {
-            const issues = await fetchData(url)
+            const issues = await fetchData(issueUrl)
+            const prs = await fetchData(prUrl)
             setLoading(false)
             setError(false)
-            history.push('/issues', {state: { issues, value }})
+            history.push('/issues', {state: { issues, value , prs }})
         } catch (e) {
             setError(true)
             throw new Error("Error fetching issues and pull requests from Github API")
