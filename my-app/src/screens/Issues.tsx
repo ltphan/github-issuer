@@ -7,42 +7,58 @@ import { strings } from "../localization/strings";
 
 interface State {
     issues: Array<any>
-    value: string
+    value: string,
+    prs: Array<any>
+}
+
+enum Type {
+    PR = "pr",
+    Open = "open",
+    Closed = "closed",
+    Issues = "issues",
+    All = "all"
 }
 
 const Issues: FunctionComponent = () => {
-    const [filteredIssues, setFilteredIssues] = useState<Array<any> | []>([])
+    const [onScreenContent, setOnScreenContent] = useState<Array<any> | []>([]);
+    const [issues, setIssues] = useState<Array<any> | []>([])
+    const [prs, setPrs] = useState<Array<any> | []>([])
     const location  = useLocation<{ state: State}>()
     const { state } = location
         
     useEffect(() => {
-        setFilteredIssues(state.state.issues)
+        setIssues(state.state.issues)
+        setPrs(state.state.prs)
+        setOnScreenContent(state.state.issues)
     }, [])
 
-    const onFilter = (issueState: string) => {
-        const issues = state.state.issues
-
-        if (issueState === "all") {
-            setFilteredIssues(issues)
-            return
+    const onFilter = (type: string) => {
+        if(type === Type.Issues){
+            setOnScreenContent(issues);
+        } else if(type === Type.Open){
+            setOnScreenContent(issues.filter(issue => issue.state === "open"));
         }
-
-        const filteredResults = issues.filter((issue) => {
-            return issue.state === issueState
-        })
-        setFilteredIssues(filteredResults)
+        else if(type === Type.Closed){
+            setOnScreenContent(issues.filter(issue => issue.state === "closed"));
+        }
+         else {
+            setOnScreenContent(prs);
+        }
     }
 
     return ( 
-        <div className="container">
+        <div>
             <Header url={state.state.value} />
-            <button onClick={() => onFilter(strings.all)}>{strings.allIssues}</button>
-            <button onClick={() => onFilter(strings.open)}>{strings.openIssues}</button>
-            <button onClick={() => onFilter(strings.closed)}>{strings.closedIssues}</button>
-            <div className="list">
-                {state.state.issues.length !== 0 ? <IssuesList issues={filteredIssues}/> : 
+          <div>
+            <button onClick={() => onFilter(Type.Issues)}>{strings.allIssues}</button>
+            <button onClick={() => onFilter(Type.Open)}>{strings.openIssues}</button>
+            <button onClick={() => onFilter(Type.Closed)}>{strings.closedIssues}</button>
+            <button onClick={() => onFilter(Type.PR)}>{strings.pullRequests}</button>
+          <div className="list">
+                {state.state.issues.length !== 0 ? <IssuesList issues={onScreenContent}/> : 
                 <h1>{strings.noIssuesOrPullRequests}</h1>}
             </div>
+            </div> 
         </div>
     )
 }
