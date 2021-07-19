@@ -11,7 +11,7 @@ const IssuesList: FunctionComponent<Props> = (props) => {
     const { issues } = props
     const issueItems = issues.map((issue) => {
        return (<li key={issue.id.toString()}>
-            <IssueItem title={issue.title} body={issue.body}/>
+            <IssueItem title={issue.title} body={issue.body} state={issue.state}/>
         </li>)
     })
 
