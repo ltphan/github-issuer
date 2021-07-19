@@ -19,7 +19,7 @@ const Search: FunctionComponent<Props> = ({ history }) => {
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const {prUrl, issueUrl} = urlBuilder(value)
+        const { prUrl, issueUrl } = urlBuilder(value)
         setLoading(true)
         try {
             const issues = await fetchData(issueUrl)
