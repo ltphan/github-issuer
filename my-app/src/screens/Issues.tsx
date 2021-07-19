@@ -16,6 +16,7 @@ const Issues: FunctionComponent = () => {
     const { state } = location
         
     useEffect(() => {
+        console.log("issues",state.state.issues)
         setFilteredIssues(state.state.issues)
     }, [])
 
