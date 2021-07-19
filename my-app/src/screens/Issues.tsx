@@ -23,7 +23,7 @@ const Issues: FunctionComponent = () => {
     const [onScreenContent, setOnScreenContent] = useState<Array<any> | []>([]);
     const [issues, setIssues] = useState<Array<any> | []>([])
     const [prs, setPrs] = useState<Array<any> | []>([])
-    const location  = useLocation<{ state: State}>()
+    const location  = useLocation<{ state: State }>()
     const { state } = location
         
     useEffect(() => {
