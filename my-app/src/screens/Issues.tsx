@@ -41,7 +41,7 @@ const Issues: FunctionComponent = () => {
             <button onClick={() => onFilter(strings.closed)}>{strings.closedIssues}</button>
             <div className="list">
                 {state.state.issues.length !== 0 ? <IssuesList issues={filteredIssues}/> : 
-                <h1>{strings.empty}</h1>}
+                <h1>{strings.noIssuesOrPullRequests}</h1>}
             </div>
         </div>
     )

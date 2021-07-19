@@ -9,5 +9,6 @@ export const strings = {
     closed: "closed",
     loading: "Loading...",
     error: "Unable to get issues and pull requests. Please try again",
-    empty: "No issues or pull requests"
+    empty: "No issues or pull requests",
+    noDescpritionProvided: "No description provided"
 }
