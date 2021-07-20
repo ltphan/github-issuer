@@ -4,20 +4,7 @@ import { useLocation } from "react-router-dom";
 import Header from "../components/Header/Header";
 import IssuesList from "../components/List/IssuesList";
 import { strings } from "../localization/strings";
-
-interface State {
-    issues: Array<any>
-    value: string,
-    prs: Array<any>
-}
-
-enum Type {
-    PR = "pr",
-    Open = "open",
-    Closed = "closed",
-    Issues = "issues",
-    All = "all"
-}
+import { State, Type } from "../types/types";
 
 const Issues: FunctionComponent = () => {
     const [onScreenContent, setOnScreenContent] = useState<Array<any> | []>([]);
