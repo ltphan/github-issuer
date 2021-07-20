@@ -11,13 +11,9 @@ const Header: FunctionComponent<Props> = (props) => {
     const { url } = props
 
     return (
-        <div className='header'>
-            <div>
-                <h1>{strings.githubIssueViewer}</h1>
-            </div>
-            <div>
-                <h1>{url}</h1>
-            </div>
+        <div className='header'>    
+            <h1>{strings.githubIssueViewer}</h1>
+            <h1>{url}</h1>
         </div>
     )
 }
